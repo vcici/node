@@ -33,10 +33,10 @@ const s4 = 'Algimantas cekuolis';
 // Legendines asmenybes [Vardas] [Pavarde] trumpinys yra [V.P.]
 
 function vardai(stringai){
-    let word = stringai.split(' ');
-    let raides = word[0][0].toUpperCase() + '. ' + word[1][0].toUpperCase() + '.';
-    let vardas = word[0].charAt(0).toUpperCase() + word[0].slice(1).toLowerCase();
-    let pavarde = word[1].charAt(0).toUpperCase() + word[1].slice(1).toLowerCase();
+    let words = stringai.split(' ');
+    let raides = words[0][0].toUpperCase() + '. ' + words[1][0].toUpperCase() + '.';
+    let vardas = words[0].charAt(0).toUpperCase() + words[0].slice(1).toLowerCase();
+    let pavarde = words[1].charAt(0).toUpperCase() + words[1].slice(1).toLowerCase();
     
     console.log(`Legendines asmenybes ${vardas} ${pavarde} trumpinys yra ${raides}`);
 }
@@ -47,23 +47,19 @@ vardai(s2);
 vardai(s3);
 vardai(s4);
 
-const jonas = {
-    name: 'Jonas',
-    surname: 'Jonaitis',
-    age: 99
-}
+const people = [
+    {name: 'Jonas', surname: 'Jonaitis', age: 99}, 
+    {name: 'Maryte', surname: 'Marytaite', age: 87}
+];
 
-const maryte = {
-    name: 'Maryte',
-    surname: 'Marytaite',
-    age: 87
-}
 
-// [Vardas] [Pavarde] yra [amzius] metu.
 
-function zmoniuSablonas(objektas){
+// [Vardas] [Pavarde] yra [amzius] metu amziaus.
+
+function introduce(objektas){
     console.log(`${objektas.name} ${objektas.surname} yra ${objektas.age} metu amziaus.`);
 }
 
-zmoniuSablonas(jonas);
-zmoniuSablonas(maryte);
+for (const person of people){
+    introduce(person);
+}
