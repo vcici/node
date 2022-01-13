@@ -20,8 +20,10 @@ const fs = require('fs/promises');
         const drinkDetails = drink.split(' ');      
         const [drinkName, drinkPrice, count] = drinkDetails;
         const apyvarta = parseInt(count) * parseFloat(drinkPrice);
+        const b1 = +apyvarta.toFixed(2);
+        const b2 = Math.round(apyvarta * 100) / 100;
         // const apyvarta = +count * +drinkPrice; pliusai pavers i skaicius
-        console.log(`Pasirinkimas ${++i}: ${drinkName} kurio kaina yra ${drinkPrice} euru. Buvo parduota ${count} kiekis ir bendra apyvarta yra ${apyvarta.toFixed(2)} EUR`);
+        console.log(`Pasirinkimas ${++i}: ${drinkName} kurio kaina yra ${drinkPrice} euru. Buvo parduota ${count} kiekis ir bendra apyvarta yra ${b2} EUR`);
     }
     console.log('Viso gerimu:', i);
 
