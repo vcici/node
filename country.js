@@ -1,4 +1,4 @@
-//[Parent-name] [Parent-surname] has [count] children and they names are: [Child-name], [Child-name], [Child-name].
+//[Parent-name] [Parent-surname] has [count] children and their names are: [Child-name], [Child-name], [Child-name].
 
 const fs = require('fs/promises');
 const path = require('path');
@@ -20,18 +20,16 @@ console.log(__filename);
         }
     }
     function namesOfChildren(children){
-        let i = 0;
         const vaikuVardai = [];
-        for(child in children){
-            vaikuVardai.push(children[i].name);
-            i++;
+        for(const child of children){
+            vaikuVardai.push(child.name);
         }
         
         return vaikuVardai.join(', ');
     }
     const fullPath = path.join(__dirname, './data/country.json');
     const countryContent = await fs.readFile(fullPath, 'utf-8');
-    console.log(countryContent);
+    
 
     const [personError, personObj] = parseJSONtoObject(countryContent);
     
@@ -39,10 +37,32 @@ console.log(__filename);
         console.log('Parsinant faila ivyko klaida.');
     }
     else{
-        console.log(personObj);
-        console.log(`${personObj.name} ${personObj.lastname} has ${personObj.children.length} children and they names are: ${namesOfChildren(personObj.children)}.`)
+        const {name, lastname, children} = personObj;
+        console.log(`${name} ${lastname} has ${children.length} children and their names are: ${namesOfChildren(children)}.`)
     }
     
     
 })();
 
+const skaiciai = [1, 2, 3, 8];
+const dvygubiSkaiciai = [];
+
+for (const skaicius of skaiciai) {
+    dvygubiSkaiciai.push(skaicius * 2);
+}
+
+console.log(skaiciai);
+console.log(dvygubiSkaiciai);
+
+const vardai = ['Jonas', 'Ona', 'Ciubaka'];
+const pirmosRaides = [];
+
+for (const vardas of vardai) {
+    pirmosRaides.push(vardas[0]);
+}
+
+const pirmosRaidesMap = vardai.map(v => v[0]);
+
+console.log(vardai);
+console.log(pirmosRaides);
+console.log(pirmosRaidesMap);
